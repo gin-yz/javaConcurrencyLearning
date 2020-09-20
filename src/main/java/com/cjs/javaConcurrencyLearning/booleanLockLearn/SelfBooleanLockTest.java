@@ -9,7 +9,6 @@ import java.util.stream.IntStream;
 public class SelfBooleanLockTest {
     private final SelfLock lock = new SelfBooleanLock();
 
-
     public void syncMethod(){
         try {
             lock.lock();
@@ -46,5 +45,7 @@ public class SelfBooleanLockTest {
         new Thread(()->{
             selfBooleanLockTest.syncMethodTimeOut(1000);
         }).start();
+
+        System.out.println(selfBooleanLockTest.lock.getBolckedThreads());
     }
 }
