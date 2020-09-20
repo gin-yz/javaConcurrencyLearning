@@ -2,7 +2,7 @@
 * 执行会报错
 * */
 
-package com.cjs.javaConcurrencyLearning.threadConnect;
+package com.cjs.javaConcurrencyLearning.threadConnectLearn;
 import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
