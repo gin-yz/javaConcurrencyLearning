@@ -1,3 +1,7 @@
+/*
+* 使用内部类实现单例模式线程安全
+* */
+
 package com.cjs.javaConcurrencyLearning.singleModelLearn;
 
 public class SingleInstanceHolderModel {

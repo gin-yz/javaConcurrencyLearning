@@ -1,13 +1,12 @@
-/*
-* 此方法可能导致控制异常，不推荐使用
-* 原因：有可能一个线程ｎｅｗ完了之后，其实ｎｅｗ里面创建的对象并没有创建好，另外一个线程拿到实例的时候是一个没有创建好的实例．
-* 解决方法：加volatile或者instanceHolder
-* */
+### volatile的使用场景
+---
+1. 状态量的标记  
+如booleanLockLearn/selfBooleanLock下的状态量
 
-package com.cjs.javaConcurrencyLearning.singleModelLearn;
-
+2. 屏障前后一致性
+```java
 public class SynSingleModel {
-    private static SynSingleModel synSingleModelInstance; //加volatite
+    private static volatile SynSingleModel synSingleModelInstance; //加volatite
 
     private SynSingleModel() {
     }
@@ -16,6 +15,7 @@ public class SynSingleModel {
         if (synSingleModelInstance == null) {
             synchronized (SynSingleModel.class) {
                 if (synSingleModelInstance == null) {
+                    //不加volitile不能保证执行完ｎｅｗ里面的内容创建好
                     synSingleModelInstance = new SynSingleModel();//加ｖｏｌｉｔｉｌｅ之后，执行到这里，可以保证ｎｅｗ对象里面的操作一定创建好了
                 }
             }
@@ -26,3 +26,4 @@ public class SynSingleModel {
 
     public void doSomething(){}
 }
+```
