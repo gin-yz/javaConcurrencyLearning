@@ -23,9 +23,7 @@ public class CyclicBarrierDemo {
                 cyclicBarrier.await();
                 doWork();
                 cyclicBarrier.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (BrokenBarrierException e) {
+            } catch (InterruptedException | BrokenBarrierException e) {
                 e.printStackTrace();
             }
 
@@ -37,7 +35,7 @@ public class CyclicBarrierDemo {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            System.out.println(soldier + ":�������");
+            System.out.println(soldier + ":task finish");
         }
     }
 
@@ -54,24 +52,24 @@ public class CyclicBarrierDemo {
         @Override
         public void run() {
             if (flag) {
-                System.out.println("˾��:[ʿ��" + N + "��,�������!");
+                System.out.println("˾��:[ʿ��" + N + " 2 !");
             } else {
-                System.out.println("˾��:[ʿ��" + N + "��,�������!");
+                System.out.println("˾��:[ʿ��" + N + " 1 !");
                 flag = true;
             }
         }
     }
 
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         final int N = 10;
         Thread[] allSoldier = new Thread[N];
         boolean flag = false;
         CyclicBarrier cyclicBarrier = new CyclicBarrier(N, new BarrierRun(flag, N));
-        System.out.println("���϶���!");
+        System.out.println("start!");
         for (int i = 0; i < N; i++) {
-            System.out.println("ʿ��" + i + "����!");
-            allSoldier[i] = new Thread(new Soldier(cyclicBarrier, "ʿ��" + i));
+            System.out.println("soldier " + i + " answer!");
+            allSoldier[i] = new Thread(new Soldier(cyclicBarrier, "ʿsoldier" + i));
             allSoldier[i].start();
         }
     }

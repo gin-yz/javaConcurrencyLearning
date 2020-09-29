@@ -3,9 +3,7 @@ package com.cjs.javaConcurrencyLearning.actualLearn.jucUtils.reentrantlockLearn;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by 13 on 2017/5/5.
- */
+
 public class ReenterLockCondition implements Runnable {
     public static ReentrantLock lock = new ReentrantLock();
     public static Condition condition = lock.newCondition();
@@ -25,11 +23,11 @@ public class ReenterLockCondition implements Runnable {
 
     }
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         ReenterLockCondition reenterLockCondition = new ReenterLockCondition();
         Thread thread1 = new Thread(reenterLockCondition);
         thread1.start();
-        System.out.println("˯��2����");
+        System.out.println("睡眠2秒钟");
         Thread.sleep(2000);
         lock.lock();
         condition.signal();

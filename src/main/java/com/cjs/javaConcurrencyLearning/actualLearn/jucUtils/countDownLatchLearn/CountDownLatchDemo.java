@@ -24,7 +24,7 @@ public class CountDownLatchDemo implements Runnable {
         }
     }
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
         for (int i = 0; i < 10; i++) {
             executorService.submit(demo);

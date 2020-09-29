@@ -19,16 +19,20 @@ public class LockSupportDemo {
             synchronized (u) {
                 System.out.println("in " + getName());
                 LockSupport.park();
+                if(Thread.interrupted()){
+                    System.out.println(getName()+"被中断");
+                }
             }
         }
     }
 
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         t1.start();
-        Thread.sleep(100);
+        Thread.sleep(1000);
         t2.start();
         LockSupport.unpark(t1);
+//        t1.interrupt();
         LockSupport.unpark(t2);
         t1.join();
         t2.join();
