@@ -10,5 +10,6 @@ public class LongAccumulatorDemo {
         LongAccumulator longAccumulatorAdd = new LongAccumulator(Long::sum,0L);
         //除了要自定义规则,其他的和ＬｏｎｇＡｄｄｅｒ差不多
 
+
     }
 }

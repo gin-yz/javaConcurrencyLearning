@@ -18,7 +18,7 @@ public class PublisherDemo {
 
         String[] items = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-        Arrays.asList(items).stream().forEach(i -> {
+        Arrays.stream(items).forEach(i -> {
             publisher.submit(i);
             System.out.println(Thread.currentThread().getName() + " publish" + i);
         });
