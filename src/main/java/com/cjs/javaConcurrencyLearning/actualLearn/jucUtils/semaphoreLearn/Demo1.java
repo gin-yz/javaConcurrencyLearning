@@ -5,7 +5,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 public class Demo1 implements Runnable {
-    final Semaphore semp = new Semaphore(5);
+    final Semaphore             semp = new Semaphore(5);
 
     @Override
     public void run() {
