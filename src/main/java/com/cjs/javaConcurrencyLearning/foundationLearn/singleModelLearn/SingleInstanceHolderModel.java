@@ -1,6 +1,7 @@
 /*
 * 使用内部类实现单例模式线程安全
 * 外部类可以访问内部类
+* 使用的是静态内部类
 * */
 
 package com.cjs.javaConcurrencyLearning.foundationLearn.singleModelLearn;
